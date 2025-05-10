@@ -8,7 +8,7 @@ st.markdown("## MLB Hall of Fame Probability & Stat Importance Explorer")
 st.markdown("""
 This app uses logistic regression models trained on Baseball Databank data to:
 - Show which statistics are most influential for pitchers vs. non-pitchers
-- Estimate a player’s probability of Hall of Fame induction based on career stats
+- Estimate a player's probability of Hall of Fame induction based on career stats
 
 You can input custom stats or explore stat importance below.
 Note: The databank only contains/considers stats up to 2015.
@@ -30,7 +30,7 @@ st.markdown("## Make Predictions")
 player = st.selectbox("Please Select a Player:", get_players(), index=None, placeholder="Select a player")
 
 
-if st.button("Predict HOF Probabilies") and player:
+if st.button("Predict HOF Probabilities") and player:
     preds, probs = predict_player(player)
     if preds[0] == 0:
         st.markdown(f"Player {player} is not predicted to make the hall of fame.")
