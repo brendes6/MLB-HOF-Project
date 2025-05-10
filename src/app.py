@@ -30,7 +30,7 @@ st.markdown("## Make Predictions")
 player = st.selectbox("Please Select a Player:", get_players(), index=None, placeholder="Select a player")
 
 
-if st.button("Predict HOF Probabilies"):
+if st.button("Predict HOF Probabilies") and player:
     preds, probs = predict_player(player)
     if preds[0] == 0:
         st.markdown(f"Player {player} is not predicted to make the hall of fame.")
