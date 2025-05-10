@@ -1,5 +1,6 @@
 from util import get_player_ID, get_player_name, pitcher, get_nonpitcher_stats, get_pitcher_stats
 import joblib
+import os
 
 
 def predict_pitcher(stats):
@@ -11,10 +12,13 @@ def predict_pitcher(stats):
     X = stats[metrics]
     y = stats["HOF"]
 
-    scaler = joblib.load("../Scalers/pitching_scaler.pkl")
+    current_script_dir = os.path.dirname(__file__)
+    pitching_scaler_relative_path = os.path.join(current_script_dir, "..", "Scalers", "pitching_scaler.pkl")
+    pitching_model_relative_path = os.path.join(current_script_dir, "..", "Models", "pitching_model.pkl")
+    scaler = joblib.load(pitching_scaler_relative_path)
 
     X = scaler.transform(X)
-    model = joblib.load("../Models/pitching_model.pkl")
+    model = joblib.load(pitching_model_relative_path)
 
     predictions = model.predict(X)
     probabilities = model.predict_proba(X)[0]
@@ -30,10 +34,13 @@ def predict_nonpitcher(stats):
     X = stats[metrics]
     y = stats["HOF"]
 
-    scaler = joblib.load("../Scalers/nonpitching_scaler.pkl")
+    current_script_dir = os.path.dirname(__file__)
+    nonpitching_scaler_relative_path = os.path.join(current_script_dir, "..", "Scalers", "nonpitching_scaler.pkl")
+    nonpitching_model_relative_path = os.path.join(current_script_dir, "..", "Models", "nonpitching_model.pkl")
+    scaler = joblib.load(nonpitching_scaler_relative_path)
 
     X = scaler.transform(X)
-    model = joblib.load("../Models/nonpitching_model.pkl")
+    model = joblib.load(nonpitching_model_relative_path)
 
     predictions = model.predict(X)
     probabilities = model.predict_proba(X)[0]
