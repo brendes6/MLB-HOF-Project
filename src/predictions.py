@@ -1,8 +1,9 @@
 from util import get_player_ID, get_player_name, pitcher, get_nonpitcher_stats, get_pitcher_stats
 import joblib
 import os
+import streamlit as st
 
-
+@st.cache_resource
 def predict_pitcher(stats):
     metrics = ["W", "L", "G", "GS", "CG", "SHO", "SV", "IPouts",
     "H", "ER", "HR", "BB", "SO", "BAOpp", "ERA", "IBB",
@@ -26,6 +27,7 @@ def predict_pitcher(stats):
     print(probabilities)
     return predictions, probabilities
 
+@st.cache_resource
 def predict_nonpitcher(stats):
     
     metrics = ["AB", "R", "H", "2B", "3B", "HR", "RBI", "SB_x", "BB", "SO",
