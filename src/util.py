@@ -3,6 +3,7 @@ import joblib
 import os
 import streamlit as st
 
+# Load specific data anc cache it on site
 @st.cache_data
 def load_master_data():
     current_script_dir = os.path.dirname(__file__)
@@ -43,6 +44,7 @@ def load_master_nonpitching_data():
         st.error("Master non-pitching data file not found. Please ensure the data files are in the correct location.")
         return None
 
+# helper functions for getting specific data
 def pitcher(player):
     df = load_fielding_data()
     if df is None:
@@ -96,6 +98,7 @@ def get_nonpitcher_stats(player_id):
     df = df[df["playerID"] == player_id]
     return df
 
+# Get feature signifiance dataframe quickly - used in app
 @st.cache_resource
 def get_feature_significance_df(pitcher):
     current_script_dir = os.path.dirname(__file__)

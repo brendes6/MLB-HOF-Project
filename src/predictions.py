@@ -3,6 +3,7 @@ import joblib
 import os
 import streamlit as st
 
+# cache model to speed up website
 @st.cache_resource
 def predict_pitcher(stats):
     metrics = ["W", "L", "G", "GS", "CG", "SHO", "SV", "IPouts",

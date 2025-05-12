@@ -25,10 +25,8 @@ with col2:
     nonpitching_features = get_feature_significance_df(False)
     st.pyplot(nonpitching_features.plot.bar(x="Feature", y="Importance").figure)
 
-
 st.markdown("## Make Predictions")
 player = st.selectbox("Please Select a Player:", get_players(), index=None, placeholder="Select a player")
-
 
 if st.button("Predict HOF Probabilities") and player:
     preds, probs = predict_player(player)
