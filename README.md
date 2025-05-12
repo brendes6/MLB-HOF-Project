@@ -1,6 +1,6 @@
 # MLB Hall of Fame Prediction Project
 
-A machine learning project that analyzes baseball statistics to predict Hall of Fame induction probability and identify key statistical factors that influence Hall of Fame voting.
+A project that analyzes baseball statistics to predict Hall of Fame induction probability and identify the most significant statistics in Hall of Fame induction.
 
 ## Project Overview
 
